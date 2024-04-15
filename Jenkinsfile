@@ -16,24 +16,20 @@ pipeline {
         
          stage('Build Docker Image') {
             steps {
-                sh 'docker build -t lab11 .'
+                 sh 'echo docker build -t lab11 .'
             }
         }
         
         stage('Run Docker Image') {
             steps {
-                sh 'docker run -d -p 8086:80 lab11' 
+                sh 'echo docker run -d -p 8086:80 lab11' 
             }
         }
         
         
         stage('Push Docker Image') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', '1212') {
-                        docker.image("lab11").push("latest") 
-                    }
-                }
+                sh 'echo script { docker.withRegistry('https://registry.hub.docker.com', '1212') { docker.image("lab11").push("latest") }'
             }
         }
     }

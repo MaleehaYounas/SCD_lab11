@@ -14,21 +14,18 @@ pipeline {
             }
         }
         
-        stage('Build Docker Image') {
+         stage('Build Docker Image') {
             steps {
-                script {
-                    docker.build("lab11") 
-                }
+                sh 'docker build -t lab11 .'
             }
         }
         
         stage('Run Docker Image') {
             steps {
-                script {
-                    docker.run("lab11") 
-                }
+                sh 'docker run -d -p 8086:80 lab11' 
             }
         }
+        
         
         stage('Push Docker Image') {
             steps {

@@ -29,7 +29,7 @@ pipeline {
         
         stage('Push Docker Image') {
             steps {
-                sh 'echo script { docker.withRegistry('https://registry.hub.docker.com', '1212') { docker.image("lab11").push("latest") }'
+                sh 'echo script { docker.withRegistry(https://registry.hub.docker.com, 1212) { docker.image("lab11").push("latest") }'
             }
         }
     }

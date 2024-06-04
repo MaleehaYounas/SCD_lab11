@@ -10,26 +10,26 @@ pipeline {
         
         stage('Dependency Installation') {
             steps {
-                sh 'npm install' 
+                bat 'npm install' 
             }
         }
         
          stage('Build Docker Image') {
             steps {
-                 sh 'echo docker build -t lab11 .'
+                 bat 'echo docker build -t lab11 .'
             }
         }
         
         stage('Run Docker Image') {
             steps {
-                sh 'echo docker run -d -p 8086:80 lab11' 
+                bat 'echo docker run -d -p 8086:80 lab11' 
             }
         }
         
         
         stage('Push Docker Image') {
             steps {
-                sh 'echo script { docker.withRegistry(https://registry.hub.docker.com, 1212) { docker.image("lab11").push("latest") }'
+                bat 'echo script { docker.withRegistry(https://registry.hub.docker.com, 1212) { docker.image("lab11").push("latest") }'
             }
         }
     }
